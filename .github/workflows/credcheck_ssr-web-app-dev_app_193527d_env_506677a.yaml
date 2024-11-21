@@ -421,6 +421,7 @@ jobs:
                 formattedRepoUrl=$(echo "$REPOSITORY" | sed 's|git://|https://|') 
                 echo "Formatted Repository URL: $formattedRepoUrl"
 
+                echo ${{ env.pat }}
                 if [ -n ${{ github.event.client_payload.externalRepoUrl }} ]; then
                   token_flag="--oauth-token"
                   access_token=${{ github.event.client_payload.externalRepoAppToken }}
@@ -428,7 +429,6 @@ jobs:
                   token_flag="--access-token"
                   access_token=${{ env.pat }}
                 fi
-                echo $access_token
                 create_app=$(
                   aws amplify create-app         --name ${{ env.APPLICATION_NAME }}         --platform WEB_COMPUTE         --repository $formattedRepoUrl         --environment-variables "Branch=$BRANCH_NAME,Commit=$COMMIT_ID${{ env.AMPLIFY_ENV_VARS }}"         $token_flag $access_token         --region ${{ env.region }}         --iam-service-role-arn ${{ env.roleARN }}         --build-spec "$build_spec"       )
                 app_id=$(echo $create_app | jq -r '.app.appId')
