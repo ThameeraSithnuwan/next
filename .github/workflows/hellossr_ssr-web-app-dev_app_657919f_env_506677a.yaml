@@ -422,7 +422,6 @@ jobs:
                 echo "Formatted Repository URL: $formattedRepoUrl"
 
                 if [ -n ${{ github.event.client_payload.externalRepoUrl }} ]; then
-                  echo "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
                   token_flag="--oauth-token"
                   access_token=${{ github.event.client_payload.externalRepoAppToken }}
                 else
@@ -430,6 +429,7 @@ jobs:
                   access_token=${{ env.pat }}
                 fi
                 echo "##########################################################"
+                echo ${{ github.event.client_payload.externalRepoUrl }}
                 echo $token_flag
                 echo $access_token
                 echo "##########################################################"
