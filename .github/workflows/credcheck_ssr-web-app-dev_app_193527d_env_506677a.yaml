@@ -420,10 +420,9 @@ jobs:
                 echo "Initializing new Amplify App"
                 formattedRepoUrl=$(echo "$REPOSITORY" | sed 's|git://|https://|') 
                 echo "Formatted Repository URL: $formattedRepoUrl"
-                echo "##########################################################"
-                echo ${{ env.pat }}
-                echo "##########################################################"
+       
                 if [ -n ${{ github.event.client_payload.externalRepoUrl }} ]; then
+                  echo "############################################################################"
                   token_flag="--oauth-token"
                   access_token=${{ github.event.client_payload.externalRepoAppToken }}
                 else
