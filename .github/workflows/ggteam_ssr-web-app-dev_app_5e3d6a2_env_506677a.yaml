@@ -421,7 +421,8 @@ jobs:
                 formattedRepoUrl=$(echo "$REPOSITORY" | sed 's|git://|https://|') 
                 echo "Formatted Repository URL: $formattedRepoUrl"
 
-                if [ -n ${{ github.event.client_payload.externalRepoUrl }} ]; then
+                externalRepoUrl=\${{ github.event.client_payload.externalRepoUrl }}
+                if [ -n "$externalRepoUrl" ]; then
                   token_flag="--oauth-token"
                   access_token=${{ github.event.client_payload.externalRepoAppToken }}
                 else
