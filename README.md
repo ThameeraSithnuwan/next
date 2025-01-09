@@ -2,7 +2,7 @@ This is a [Next.js](https://nextjs.org) projectdfgdg bootstrapped with [`create-
 
 ## Getting Started
 
-First, run the development server:
+First, run the development ssdfsferver:
 
 ```bash
 npm run dev
